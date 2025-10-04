@@ -1,0 +1,1041 @@
+/* 777スロット天国 - ロト6ジャックポット制度 スタイルシート */
+/* 当たるんです完全模倣デザイン + 白い部分除去 */
+
+/* =====================================
+   基本リセット・設定
+===================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic Medium', Meiryo, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* =====================================
+   ヒーローセクション（動画背景）
+===================================== */
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.hero-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: relative;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 40px 20px;
+}
+
+/* =====================================
+   ロト6当選番号説明セクション
+===================================== */
+.winning-numbers-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #fff5e6, #ffeaa7);
+}
+
+.winning-example {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.example-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.example-header h3 {
+    font-size: 1.6rem;
+    color: #e53e3e;
+    margin-bottom: 10px;
+}
+
+.example-header p {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.ticket-display {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.golden-ticket {
+    width: 280px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+}
+
+.ticket-numbers, .result-numbers {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.number-set {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.number-set.bonus {
+    margin-top: 10px;
+}
+
+.number-label {
+    font-size: 1rem;
+    color: #666;
+    font-weight: bold;
+}
+
+.number-boxes {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.number-box {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.number-box.winning {
+    background: linear-gradient(145deg, #4CAF50, #45a049);
+    color: white;
+    border-color: #4CAF50;
+    animation: winning-pulse 2s infinite;
+}
+
+.number-box.bonus-num {
+    background: linear-gradient(145deg, #fbb700, #f39c12);
+    color: white;
+    border-color: #fbb700;
+}
+
+.bonus-note {
+    font-size: 0.8rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.vs-arrow {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #e53e3e;
+    background: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #e53e3e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.result-explanation {
+    background: white;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.result-card {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.jackpot-result {
+    background: linear-gradient(145deg, #d4edda, #c3e6cb);
+    border: 2px solid #28a745;
+}
+
+.result-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.result-card h3 {
+    font-size: 1.8rem;
+    color: #28a745;
+    margin-bottom: 15px;
+}
+
+.match-analysis p {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.prize-amount {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #e53e3e;
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(229, 62, 62, 0.1);
+    border-radius: 8px;
+}
+
+.winning-conditions h4 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.conditions-grid {
+    display: grid;
+    gap: 15px;
+}
+
+.condition-item {
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    gap: 15px;
+    align-items: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #ddd;
+}
+
+.condition-item.important {
+    background: #fff3cd;
+    border-left-color: #fbb700;
+}
+
+.condition-match {
+    font-weight: bold;
+    color: #333;
+}
+
+.condition-arrow {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.condition-result.super {
+    color: #e53e3e;
+    font-weight: bold;
+}
+
+.condition-result.mini {
+    color: #9b2c2c;
+    font-weight: bold;
+}
+
+.condition-note {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+@keyframes winning-pulse {
+    0%, 100% {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+        transform: scale(1.05);
+    }
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-badges {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.badge-hot {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+    color: white;
+    animation: pulse 2s infinite;
+}
+
+.badge-carryover {
+    background: linear-gradient(45deg, #fbb700, #f39c12);
+    color: white;
+}
+
+.badge-anonymous {
+    background: linear-gradient(45deg, #6c5ce7, #5f3dc4);
+    color: white;
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.hero-cta {
+    margin-top: 30px;
+}
+
+/* =====================================
+   ボタンスタイル（当たるんです模倣）
+===================================== */
+.cta-button, .product-button {
+    padding: 16px 32px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-transform: none;
+}
+
+.cta-button.primary {
+    background: linear-gradient(45deg, #fbb700, #f39c12);
+    color: white;
+    box-shadow: 0 6px 12px rgba(251, 183, 0, 0.3);
+}
+
+.product-button {
+    background: linear-gradient(45deg, #e53e3e, #9b2c2c);
+    color: white;
+    width: 100%;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+}
+
+.cta-button:hover, .product-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* リップル効果 */
+.ripple-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple-effect:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: width 0.6s, height 0.6s, top 0.6s, left 0.6s;
+    transform: translate(-50%, -50%);
+}
+
+.ripple-effect:active:before {
+    width: 300px;
+    height: 300px;
+}
+
+/* =====================================
+   キャリーオーバーバナー
+===================================== */
+.carryover-banner {
+    background: linear-gradient(45deg, #fbb700, #f39c12);
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.banner-icon {
+    font-size: 3rem;
+    animation: rocket-animation 3s ease-in-out infinite;
+}
+
+@keyframes rocket-animation {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.banner-text h2 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.banner-text p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* =====================================
+   統計バナー（当たるんです模倣）
+===================================== */
+.stats-banner {
+    background: linear-gradient(45deg, #fbb700, #f39c12);
+    color: white;
+    padding: 20px 0;
+}
+
+.stats-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.stats-icon {
+    display: flex;
+    gap: 10px;
+}
+
+.angel-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.stats-text h3 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+.stats-amount {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    animation: count-animation 2s ease-out;
+}
+
+/* =====================================
+   商品グリッド（当たるんです模倣）
+===================================== */
+.products {
+    padding: 60px 0;
+    background-color: #fff;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 50px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.jackpot-super {
+    border-color: #e53e3e;
+    background: linear-gradient(to bottom, #fff, #ffe6e6);
+}
+
+.jackpot-mini {
+    border-color: #9b2c2c;
+    background: linear-gradient(to bottom, #fff, #f5e6e6);
+}
+
+.product-header {
+    padding: 30px 20px 20px;
+    text-align: center;
+    background: linear-gradient(45deg, #e53e3e, #9b2c2c);
+    color: white;
+}
+
+.product-logo {
+    margin-bottom: 15px;
+}
+
+.product-angel {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product-header h3 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.product-condition {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.product-body {
+    padding: 30px 20px;
+}
+
+.product-price {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #e53e3e;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.product-amount {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.amount-label {
+    display: block;
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.amount-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #e53e3e;
+    animation: count-animation 2s ease-out;
+}
+
+.product-info {
+    display: grid;
+    gap: 10px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.info-label {
+    color: #666;
+}
+
+.info-value {
+    font-weight: bold;
+    color: #333;
+}
+
+.product-footer {
+    padding: 0 20px 20px;
+}
+
+/* =====================================
+   システム特徴セクション
+===================================== */
+.features {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.feature-image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.feature-card h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    color: #666;
+    line-height: 1.7;
+}
+
+/* =====================================
+   信頼性セクション
+===================================== */
+.trust-section {
+    padding: 60px 0;
+    background: linear-gradient(45deg, #e53e3e, #9b2c2c);
+    color: white;
+}
+
+.trust-content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 40px;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.trust-image {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.trust-text h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.trust-text p {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.95;
+}
+
+/* =====================================
+   参加方法セクション
+===================================== */
+.how-to {
+    padding: 60px 0;
+    background-color: #fff;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.step-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.step-number {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #e53e3e, #9b2c2c);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.step-icon {
+    font-size: 3rem;
+    margin: 25px 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.step-angel {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #e53e3e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.step-card h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.step-card p {
+    color: #666;
+    line-height: 1.7;
+}
+
+/* =====================================
+   フッター
+===================================== */
+.footer {
+    background: linear-gradient(45deg, #2c3e50, #34495e);
+    color: white;
+    padding: 40px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-logo h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #fbb700;
+}
+
+.footer-info h4,
+.footer-legal h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #fbb700;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #455a64;
+    opacity: 0.8;
+}
+
+/* =====================================
+   アニメーション
+===================================== */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes count-animation {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.8s ease-out;
+}
+
+/* =====================================
+   レスポンシブデザイン
+===================================== */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-badges {
+        gap: 10px;
+    }
+    
+    .badge {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .banner-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .banner-text h2 {
+        font-size: 1.8rem;
+    }
+    
+    .stats-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .trust-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* 新しいセクションのモバイル対応 */
+    .winning-example {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .vs-arrow {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .golden-ticket {
+        width: 240px;
+    }
+    
+    .number-box {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .condition-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        text-align: center;
+    }
+    
+    .condition-arrow {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .amount-value {
+        font-size: 2rem;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* 小さなモバイルデバイス用の追加調整 */
+    .golden-ticket {
+        width: 200px;
+    }
+    
+    .number-box {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    .number-boxes {
+        gap: 6px;
+    }
+    
+    .result-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .prize-amount {
+        font-size: 1.5rem;
+    }
+    
+    .example-card {
+        padding: 20px;
+    }
+    
+    .result-explanation {
+        padding: 25px;
+    }
+}
+
+/* =====================================
+   パフォーマンス最適化
+===================================== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* スクロールバー最適化 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #e53e3e, #9b2c2c);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #c13434, #812424);
+}
+
+/* =====================================
+   印刷スタイル
+===================================== */
+@media print {
+    .hero-video,
+    .hero-overlay {
+        display: none;
+    }
+    
+    .hero {
+        height: auto;
+        background: white;
+        color: black;
+    }
+    
+    .hero-content {
+        color: black;
+    }
+}
